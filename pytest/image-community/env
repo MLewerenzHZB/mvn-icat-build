@@ -1,0 +1,14 @@
+WORKDIR=$HOME/test
+PYTHON=${PYTHON:-python3.12}
+PYTHON_VERSION=$($PYTHON -c 'import sys; sys.stdout.write("%d.%d" % sys.version_info[0:2])')
+DIST=$(basename $WORKDIR/python-icat-*.tar.gz)
+DISTDIR=${DIST%%.tar.gz}
+
+export PYTHONPATH=$WORKDIR/$DISTDIR/build/lib
+export PATH=$WORKDIR/$DISTDIR/build/scripts-$PYTHON_VERSION:$HOME/bin:/opt/python/bin:/usr/local/bin:/usr/bin:/bin
+
+alias icatsh="$PYTHON -i $HOME/bin/icatsh"
+
+# Local Variables:
+# mode: sh
+# End:

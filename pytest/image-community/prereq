@@ -1,0 +1,5 @@
+distutils-pytest
+pytest-dependency ; python_version == '2.7'
+pytest-dependency < 0.4 ; python_version == '3.3'
+pytest-dependency ; python_version > '3.3'
+suds

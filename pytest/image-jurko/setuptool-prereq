@@ -1,0 +1,2 @@
+# Must downgrade setuptools as version 58.0 and newer breaks suds-jurko
+setuptools < 58.0

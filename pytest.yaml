@@ -1,0 +1,18 @@
+version: '3'
+
+
+services:
+
+  pytest-jurko:
+    build:
+      context: ./pytest/image-jurko
+    volumes:
+      - ./pytest/icat.cfg:/home/abuild/.config/icat/icat.cfg:ro
+      - ./pytest/test:/home/abuild/test
+
+  pytest-community:
+    build:
+      context: ./pytest/image-community
+    volumes:
+      - ./pytest/icat.cfg:/home/abuild/.config/icat/icat.cfg:ro
+      - ./pytest/test:/home/abuild/test
