@@ -6,3 +6,4 @@
 /build/image/certs/openssl.cnf
 /build/image/certs/rootcert.pem
 /build/src
+/pytest/test

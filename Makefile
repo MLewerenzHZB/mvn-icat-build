@@ -18,15 +18,16 @@ down: env
 run: env up
 	sudo docker-compose exec build bash
 
-run-pytest: #fix-perms 
+run-pytest: fix-perms 
 	sudo docker-compose -f pytest.yaml run --rm pytest-$(SUDS)
 
+#sudo chgrp -R '800' pytest/icat-config
+#sudo chmod -R 'g+r,g-w,o-rwx' pytest/icat-config
 fix-perms: pytest/test
-	sudo chgrp -R '800' pytest/icat-config
-	sudo chmod -R 'g+r,g-w,o-rwx' pytest/icat-config
 	sudo chown '1000:100' pytest/icat.cfg
 	sudo chmod '0600' pytest/icat.cfg
-	sudo chown -R '1000:100' pytest/test client/tmp
+	sudo chown -R '1000:100' pytest/test
+	
 
 pytest/test:
 	mkdir -p $@
@@ -46,4 +47,4 @@ build/apps:
 build/src:
 	mkdir $@
 
-.PHONY: install build up down run env cert
+.PHONY: install build up down run run-pytest env cert
